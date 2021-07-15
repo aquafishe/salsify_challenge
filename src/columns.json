@@ -1,0 +1,22 @@
+[
+    {
+        "Header": "Product Name",
+        "accessor": "0"
+    },
+    {
+        "Header": "color",
+        "accessor": "1"
+    },
+    {
+        "Header": "weight (oz)",
+        "accessor": "2"
+    },
+    {
+        "Header": "category",
+        "accessor": "3"
+    },
+    {
+        "Header": "wireless",
+        "accessor": "4"
+    }
+]
