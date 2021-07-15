@@ -10,26 +10,36 @@ class Filter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      propertyInput: ''
+      propertyInput: {
+        id: '',
+        name: '',
+        type: '',
+      }
     }
   }
 
   handleChange = (event) => {
     if (event.target.name === 'propertyInput') {
-      this.setState({ propertyInput: event.target.value})
+      const { propertyType, propertyId } = event.currentTarget.dataset;
+      this.setState({ propertyInput: {
+        id: propertyId,
+        name: event.target.value,
+        type: propertyType
+      }})
     }
   }
 
+  //using data attributes to add more data to select drop down options
   render() {
     const { properties } = this.props;
-    console.log(properties)
+    console.log(this.state.propertyInput)
     return (
       <div>
         <FormControl variant="outlined" style={{textAlign: 'left', width: 200}}>
           <Select
             name="propertyInput"
             id="propertyInput"
-            value={this.state.propertyInput}
+            value={this.state.propertyInput.name}
             inputProps={{ 'aria-label': 'Without label' }}
             onChange={this.handleChange}
             displayEmpty
@@ -38,7 +48,13 @@ class Filter extends Component {
               Select a Property...
             </MenuItem>
             { properties.map(property => (
-                <MenuItem value={property.id}>{property.name}</MenuItem>
+                <MenuItem 
+                  data-property-id={property.id}
+                  data-property-type={property.type}
+                  value={property.name}
+                >
+                  {property.name}
+                </MenuItem>
             ))}
           </Select>
         </FormControl>
