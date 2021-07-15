@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/salsify_challenge/static/css/main.60ff96f0.chunk.css",
+    "main.js": "/salsify_challenge/static/js/main.d96ff474.chunk.js",
+    "main.js.map": "/salsify_challenge/static/js/main.d96ff474.chunk.js.map",
+    "runtime-main.js": "/salsify_challenge/static/js/runtime-main.cef05c73.js",
+    "runtime-main.js.map": "/salsify_challenge/static/js/runtime-main.cef05c73.js.map",
+    "static/js/2.18d93d77.chunk.js": "/salsify_challenge/static/js/2.18d93d77.chunk.js",
+    "static/js/2.18d93d77.chunk.js.map": "/salsify_challenge/static/js/2.18d93d77.chunk.js.map",
+    "static/js/3.46bf2ce8.chunk.js": "/salsify_challenge/static/js/3.46bf2ce8.chunk.js",
+    "static/js/3.46bf2ce8.chunk.js.map": "/salsify_challenge/static/js/3.46bf2ce8.chunk.js.map",
+    "index.html": "/salsify_challenge/index.html",
+    "static/css/main.60ff96f0.chunk.css.map": "/salsify_challenge/static/css/main.60ff96f0.chunk.css.map",
+    "static/js/2.18d93d77.chunk.js.LICENSE.txt": "/salsify_challenge/static/js/2.18d93d77.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cef05c73.js",
+    "static/js/2.18d93d77.chunk.js",
+    "static/css/main.60ff96f0.chunk.css",
+    "static/js/main.d96ff474.chunk.js"
+  ]
+}
