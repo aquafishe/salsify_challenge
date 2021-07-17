@@ -80,6 +80,8 @@ class Filter extends Component {
         }
       })
       this.props.updateFilteredData(filterData);
+    }else{
+      this.props.updateFilteredData(this.props.data);
     }
   }
 
@@ -96,12 +98,19 @@ class Filter extends Component {
       case 'propertyInput':
         const { propertyType, propertyId } = event.currentTarget.dataset;
         const distinctPropertyValues = this.getDistinctPropertyValues(this.props.data, propertyId);
+        let { operatorInput } = this.state;
+        
+        //check if new property datatype is valid with previous operator, if NOT reset operatorInput
+        if (operatorInput.text && !operatorInput.type.includes(propertyType)) {
+          operatorInput = initialState.operatorInput;
+        }
         newState = {
           propertyInput: {
             id: propertyId,
             name: value,
             type: propertyType,
-          },
+          },  
+          operatorInput: operatorInput,
           valueInput: {
             value: []
           },
@@ -111,6 +120,7 @@ class Filter extends Component {
       case 'operatorInput':
         const { operatorId } = event.currentTarget.dataset;
         const operator = operatorMap.find(operator => operator.id === operatorId);
+
         newState = {
           operatorInput: operator,
           valueInput: {
@@ -132,8 +142,7 @@ class Filter extends Component {
       ...prevState, ...newState
     }), () => {
       this.filterData()
-    }
-    )
+    })
   }
 
   /**
@@ -175,6 +184,7 @@ class Filter extends Component {
               <TextField
                 id="valueInput"
                 name="valueInput"
+                type={ this.state.propertyInput.type === "number" ? "number" : "text" }
                 value={this.state.valueInput.value}
                 onChange={this.handleChange}
                 style={formStyle.filterInput}

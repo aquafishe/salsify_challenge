@@ -1,12 +1,24 @@
 import React from 'react';
-import Input from '@material-ui/core/Input';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+	Input,
+	MenuItem,
+	FormControl,
+	Select
+} from '@material-ui/core'
+
+const useStyles = makeStyles({
+	mutliSelectForm: {
+		textAlign: 'left', 
+		minWidth: 200, 
+		width: 'auto'
+	}
+});
 
 const MutliValueSelect = ({ valueInput, distinctPropertyValues, handleChange }) => {
+	const classes = useStyles();
 	return (
-		<FormControl variant="outlined" style={{ textAlign: 'left', minWidth: 200, width: 'auto' }}>
+		<FormControl variant="outlined" className={classes.mutliSelectForm}>
 			<Select
 				name="multiValueInput"
 				id="multiValueInput"

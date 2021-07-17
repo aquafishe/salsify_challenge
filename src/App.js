@@ -28,7 +28,7 @@ class App extends Component {
       products: window.datastore.getProducts(),
       properties: window.datastore.getProperties(),
     }, () => {
-      let data = this.loadData(this.state.properties);
+      let data = this.parseProductData(this.state.properties);
       this.setState({
         data: data,
         filteredData: data,
@@ -38,15 +38,15 @@ class App extends Component {
   }
   /**
    * Parses datastore.products and flattens dataset which is passed to <Table> component
-   * @param   {Object} columns, this.state.properties which is columns in Table
+   * @param   {Object} properties, this.state.properties which is columns in Table
    * @returns {Array} Array of objects containing product property:value pairs
    */
-  loadData = (properties) => {
+  parseProductData = (properties) => {
     return this.state.products.map(product => {
       let productData = {}
       properties.forEach(property => {
-        let value = product.property_values[property.id] ? product.property_values[property.id].value : null;
-        productData[property.id] = value;
+        let productValue = product.property_values[property.id] ? product.property_values[property.id].value : null;
+        productData[property.id] = productValue;
       })
       return productData;
     })
