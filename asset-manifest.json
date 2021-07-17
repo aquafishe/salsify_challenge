@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/salsify_challenge/static/css/main.45dff754.chunk.css",
-    "main.js": "/salsify_challenge/static/js/main.e1dc2a9b.chunk.js",
-    "main.js.map": "/salsify_challenge/static/js/main.e1dc2a9b.chunk.js.map",
+    "main.js": "/salsify_challenge/static/js/main.61a8c1d4.chunk.js",
+    "main.js.map": "/salsify_challenge/static/js/main.61a8c1d4.chunk.js.map",
     "runtime-main.js": "/salsify_challenge/static/js/runtime-main.02ee94d5.js",
     "runtime-main.js.map": "/salsify_challenge/static/js/runtime-main.02ee94d5.js.map",
     "static/js/2.ef6a72a1.chunk.js": "/salsify_challenge/static/js/2.ef6a72a1.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.02ee94d5.js",
     "static/js/2.ef6a72a1.chunk.js",
     "static/css/main.45dff754.chunk.css",
-    "static/js/main.e1dc2a9b.chunk.js"
+    "static/js/main.61a8c1d4.chunk.js"
   ]
 }
