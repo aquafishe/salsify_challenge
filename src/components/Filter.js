@@ -24,6 +24,21 @@ const initialState = {
   distinctPropertyValues: []
 }
 
+const formStyle = {
+  filterContainer: {
+    float: 'left',
+    margin: "1%"
+  },
+  btnContainer: {
+    float: 'right',
+    margin: '1%'
+  },
+  filterInput: {
+    marginLeft: 10, 
+    marginRight: 10
+  }
+}
+
 class Filter extends Component {
   constructor(props) {
     super(props)
@@ -136,25 +151,25 @@ class Filter extends Component {
     const operatorId = this.state.operatorInput.id;
     return (
       <div>
-        <div id="filterInputsContainer" style={{ float: 'left', margin: "1%" }}>
+        <div id="filterInputsContainer" style={formStyle.filterContainer}>
           <PropertySelect
             properties={this.props.properties}
             propertyValue={this.state.propertyInput.name}
             handleChange={this.handleChange}
-            formProps={{ marginLeft: 10, marginRight: 10 }}
+            formProps={formStyle.filterInput}
           />
           <OperatorSelect
             operatorInput={this.state.operatorInput}
             propertyInputType={this.state.propertyInput.type}
             handleChange={this.handleChange}
-            formProps={{ marginLeft: 10, marginRight: 10 }}
+            formProps={formStyle.filterInput}
           />
           {operatorId === "in" ?
             <MutliValueSelect
               valueInput={this.state.valueInput}
               distinctPropertyValues={this.state.distinctPropertyValues}
               handleChange={this.handleChange}
-              style={{ marginLeft: 10, marginRight: 10 }}
+              style={formStyle.filterInput}
             />
             : (operatorId && operatorId != "any" && operatorId != "none") ?
               <TextField
@@ -162,11 +177,11 @@ class Filter extends Component {
                 name="valueInput"
                 value={this.state.valueInput.value}
                 onChange={this.handleChange}
-                style={{ marginLeft: 10, marginRight: 10 }}
+                style={formStyle.filterInput}
               />
               : null}
         </div>
-        <div id="clearBtnContainer" style={{ float: 'right', margin: '1%' }}>
+        <div id="clearBtnContainer" style={formStyle.btnContainer}>
           <Button
             variant="outlined"
             name="clearButton"

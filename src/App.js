@@ -10,10 +10,8 @@ class App extends Component {
     this.state = {
       products: [],
       properties: [],
-      operators: [],
       data: [],
-      filteredData: [],
-      columns: {},     
+      filteredData: [],   
       isDataLoaded: false
     }
   }
@@ -23,50 +21,32 @@ class App extends Component {
   }
 
   /**
-   * Intializes datastore into React state and loads columns/row data for table
+   * Intializes datastore attributes into React state and loads data for <Table>
    */
   loadDataStore = () => {
     this.setState({
       products: window.datastore.getProducts(),
       properties: window.datastore.getProperties(),
-      operators: window.datastore.getOperators(),
     }, () => {
-      let columns = this.loadColumns();
-      let data = this.loadData(columns);
+      let data = this.loadData(this.state.properties);
       this.setState({
-        columns: columns,
         data: data,
         filteredData: data,
         isDataLoaded: true
       })
     })
   }
-
   /**
-   * Parses datastore.properties into <Table> component column format
-   * @returns {Array} Array of objects containing property names as Headers and ids as accessors 
-   */
-  loadColumns = () => {
-    let columns = this.state.properties.map(property => {
-      return {
-        Header: property.name,
-        accessor: property.id.toString()
-      }
-    })
-    return columns;
-  }
-
-  /**
-   * Parses datastore.products into <Table> component row data format
-   * @param   {Object} columns, Array of objects retuned from loadColumns() function
+   * Parses datastore.products and flattens dataset which is passed to <Table> component
+   * @param   {Object} columns, this.state.properties which is columns in Table
    * @returns {Array} Array of objects containing product property:value pairs
    */
-  loadData = (columns) => {
+  loadData = (properties) => {
     return this.state.products.map(product => {
       let productData = {}
-      columns.forEach(column => {
-        let value = product.property_values[column.accessor] ? product.property_values[column.accessor].value : null;
-        productData[column.accessor] = value;
+      properties.forEach(property => {
+        let value = product.property_values[property.id] ? product.property_values[property.id].value : null;
+        productData[property.id] = value;
       })
       return productData;
     })
@@ -86,10 +66,9 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          <Box mt={2} borderTop={1} borderLeft={1} borderRight={1} style={{overflow: 'hidden'}}>
+          <Box mt={2} borderTop={1} borderLeft={1} borderRight={1} overflow="hidden">
           <Filter
             properties={this.state.properties}
-            operators={this.state.operators}
             data={this.state.data}
             updateFilteredData={this.updateFilteredData}
           />
