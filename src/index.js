@@ -5,6 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './resources/datastore';
 
+/**
+ * Define capitalize method on String prototype to use on String datatypes
+ * @returns String with first character as uppercase
+ */
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Table from './components/Table';
 import Filter from './components/Filter';
-import MTable from './components/MTable';
-import SimpleSelect from './components/FilterTest';
-// import liveData from './data.json';
-// import liveColumns from './columns.json';
+import ProductTable from './components/ProductTable';
+import { Container, Box } from '@material-ui/core';
 
 class App extends Component {
   constructor() {
@@ -14,8 +11,9 @@ class App extends Component {
       products: [],
       properties: [],
       operators: [],
-      data: {},
-      columns: {},
+      data: [],
+      filteredData: [],
+      columns: {},     
       isDataLoaded: false
     }
   }
@@ -25,7 +23,7 @@ class App extends Component {
   }
 
   /**
-   * Function that intializes datastore into React state and loads columns/row data for table
+   * Intializes datastore into React state and loads columns/row data for table
    */
   loadDataStore = () => {
     this.setState({
@@ -38,13 +36,14 @@ class App extends Component {
       this.setState({
         columns: columns,
         data: data,
+        filteredData: data,
         isDataLoaded: true
       })
     })
   }
 
   /**
-   * Function that parses datastore.properties into <Table /> component column format
+   * Parses datastore.properties into <Table> component column format
    * @returns {Array} Array of objects containing property names as Headers and ids as accessors 
    */
   loadColumns = () => {
@@ -58,7 +57,7 @@ class App extends Component {
   }
 
   /**
-   * Function that parses datastore.products into <Table /> component row data format
+   * Parses datastore.products into <Table> component row data format
    * @param   {Object} columns, Array of objects retuned from loadColumns() function
    * @returns {Array} Array of objects containing product property:value pairs
    */
@@ -66,37 +65,39 @@ class App extends Component {
     return this.state.products.map(product => {
       let productData = {}
       columns.forEach(column => {
-        let value = product.property_values[column.accessor] ? product.property_values[column.accessor].value : 'N/A';
-        productData[column.accessor] = value
+        let value = product.property_values[column.accessor] ? product.property_values[column.accessor].value : null;
+        productData[column.accessor] = value;
       })
       return productData;
     })
   }
 
   /**
-   * Function that updates state data property which will update table row data
-   * @param {*} data
+   * Function passed to <Filter> to update filteredData state passed to <ProductTable>
+   * @param {*} data 
    */
-  updateData = (data) => {
-    this.setState({ 
-      data: {...data}
+  updateFilteredData = (data) => {
+    this.setState({
+      filteredData: [...data]
     })
   }
 
   render() {
     return (
       <div className="App">
-        <Filter 
-          properties={this.state.properties} 
-          updateData={this.updateData}
-        />
+        <Container>
+          <Box mt={2} borderTop={1} borderLeft={1} borderRight={1} style={{overflow: 'hidden'}}>
+          <Filter
+            properties={this.state.properties}
+            operators={this.state.operators}
+            data={this.state.data}
+            updateFilteredData={this.updateFilteredData}
+          />
+        </Box>
         { !this.state.isDataLoaded ? null : 
-          <div>
-            {/* <Table columns={this.state.columns} data={this.state.data} /> */}
-            <MTable properties={this.state.properties} data={this.state.data} />
-          </div>
+          <ProductTable properties={this.state.properties} data={this.state.filteredData} />
         }
-        {/* <SimpleSelect /> */}
+        </Container>
       </div>
     )
   }

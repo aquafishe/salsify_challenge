@@ -21,3 +21,13 @@ td {
   width: 150px;
 }
 
+.MuiTableCell-root {
+  border-bottom: none;
+  /* border-right: none;
+  border-left: none; */
+}
+
+.MuiTableCell-root :last-child {
+  border-right: none;
+  border-left: none;
+}
