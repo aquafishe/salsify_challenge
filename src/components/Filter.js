@@ -93,7 +93,7 @@ class Filter extends Component {
     const { name } = event.target;
     let { value } = event.target;
     let newState = {}
-    console.log(name)
+    
     switch (name) {
       case 'propertyInput':
         const { propertyType, propertyId } = event.currentTarget.dataset;
@@ -178,7 +178,7 @@ class Filter extends Component {
               valueInput={this.state.valueInput}
               distinctPropertyValues={this.state.distinctPropertyValues}
               handleChange={this.handleChange}
-              style={formStyle.filterInput}
+              formProps={formStyle.filterInput}
             />
             : (operatorId && operatorId != "any" && operatorId != "none") ?
               <TextField

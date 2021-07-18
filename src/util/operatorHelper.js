@@ -4,13 +4,16 @@
   * @returns 
   */
 const stringifyValue = (value) => {
-  if (value === null) return "null";
-  if (typeof value === 'number') return value.toString();
+  if (value === null) return "";
+  if (typeof value === "number") return value.toString();
   return value;
 }
 
 const equals = (productValue, value) => {
-  if (value.length == 0) return false
+  if (value.length == 0) {
+    if (!productValue) return true;
+    return false;
+  }
   productValue = stringifyValue(productValue);
   return value[0].toUpperCase() === productValue.toUpperCase();
 }
@@ -28,7 +31,6 @@ const any = (productValue) => {
 }
 
 const none = (productValue) => {
-  console.log(productValue)
   return productValue === null
 }
 
@@ -38,6 +40,7 @@ const within = (productValue, valueArr) => {
   let match = false;
   productValue = stringifyValue(productValue);
   valueArr.forEach(value => {
+    value = value === "null" ? "" : value
     if (value.toUpperCase() === productValue.toUpperCase()) {
       match = true
     }

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 	}
 });
 
-const MutliValueSelect = ({ valueInput, distinctPropertyValues, handleChange }) => {
+const MutliValueSelect = ({ valueInput, distinctPropertyValues, formProps, handleChange }) => {
 	const classes = useStyles();
 	return (
 		<FormControl variant="outlined" className={classes.mutliSelectForm}>
@@ -25,6 +25,7 @@ const MutliValueSelect = ({ valueInput, distinctPropertyValues, handleChange }) 
 				multiple
 				value={valueInput.value}
 				onChange={handleChange}
+				style={formProps}
 				input={<Input />}
 			>
 				{distinctPropertyValues.map(property => {
