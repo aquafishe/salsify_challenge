@@ -98,13 +98,14 @@ Started by setting up a 'create-react-app' project to make getting started easie
 # Takeaways
 Recap of takeaways after completing challenge.
 ## Time Spent
-I took a lot more time than I originally expected. However that wasn't such a bad thing since I definitely learned a lot from the challenge. I started reviewing it Tuesday night and finished 95% of development by Friday night. I spent on average about 3-4 hours everyday. 
+I took a lot more time than I originally expected. However that wasn't such a bad thing since I definitely learned a lot from the challenge. I started reviewing it Tuesday night and finished 95% of development by Friday night. I spent on average about 3-4 hours everyday.
 
 | Phase  | Time Spent |
 |--------|------------|
 |Review  | 2 hours    |
 |Investigation  | 1-2 hours |
 |Implementation | 12 hours  |
+|Testing        | 1 hour    |
 |Documentation  | 2 hours   |
 
 ## Retrospective
