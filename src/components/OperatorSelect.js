@@ -24,8 +24,7 @@ const OperatorSelect = ({ operatorInput, propertyInputType, formProps, handleCha
         </MenuItem>
         {operatorMap.map(operator => {
           //only render valid operators based on chosen property type
-          if (operator.type.includes(propertyInputType)) {
-            return (
+          return (operator.type.includes(propertyInputType)) ?
               <MenuItem
                 key={operator.id}
                 data-operator-id={operator.id}
@@ -33,9 +32,8 @@ const OperatorSelect = ({ operatorInput, propertyInputType, formProps, handleCha
               >
                 {operator.text}
               </MenuItem>
-            )
-          }
-        })}
+              : null
+          })}
       </Select>
     </FormControl>
   )

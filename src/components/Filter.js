@@ -180,7 +180,7 @@ class Filter extends Component {
               handleChange={this.handleChange}
               formProps={formStyle.filterInput}
             />
-            : (operatorId && operatorId != "any" && operatorId != "none") ?
+            : (operatorId && operatorId !== "any" && operatorId !== "none") ?
               <TextField
                 id="valueInput"
                 name="valueInput"

@@ -10,7 +10,7 @@ const stringifyValue = (value) => {
 }
 
 const equals = (productValue, value) => {
-  if (value.length == 0) {
+  if (value.length === 0) {
     if (!productValue) return true;
     return false;
   }
@@ -36,7 +36,7 @@ const none = (productValue) => {
 
 //need to change fn to 'within' instead of id: 'in' since 'in' is js keyword
 const within = (productValue, valueArr) => {
-  if (valueArr.lessThan == 0) return false
+  if (valueArr.length === 0) return false
   let match = false;
   productValue = stringifyValue(productValue);
   valueArr.forEach(value => {
@@ -49,7 +49,7 @@ const within = (productValue, valueArr) => {
 }
 
 const contains = (productValue, value) => {
-  if (value.length == 0) return false
+  if (value.length === 0) return false
   return productValue.toUpperCase().includes(value[0].toUpperCase());
 }
 
