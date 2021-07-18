@@ -9,8 +9,8 @@ import {
 
 const useStyles = makeStyles({
 	mutliSelectForm: {
-		textAlign: 'left', 
-		minWidth: 200, 
+		textAlign: 'left',
+		minWidth: 200,
 		width: 'auto'
 	}
 });

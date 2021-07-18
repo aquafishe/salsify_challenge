@@ -43,7 +43,7 @@ const ProductTable = (props) => {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{ data.map((product, index) => (
+						{data.map((product, index) => (
 							<TableRow
 								key={`product-${product[0]}`}
 								className={index % 2 ? classes.tableRow : null}

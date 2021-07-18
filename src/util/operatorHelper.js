@@ -1,8 +1,8 @@
- /**
-  * Helper fn used to return Stringify value to compare correctly
-  * @param {*} value 
-  * @returns 
-  */
+/**
+ * Helper fn used to return Stringify value to compare correctly
+ * @param {*} value 
+ * @returns 
+ */
 const stringifyValue = (value) => {
   if (value === null) return "";
   if (typeof value === "number") return value.toString();

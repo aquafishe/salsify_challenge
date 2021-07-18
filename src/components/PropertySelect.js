@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  MenuItem,
-  FormControl,
-  Select,
+	MenuItem,
+	FormControl,
+	Select,
 } from '@material-ui/core';
 
 const PropertySelect = ({ propertyValue, properties, formProps, handleChange }) => {

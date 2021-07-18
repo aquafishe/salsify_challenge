@@ -34,7 +34,7 @@ const formStyle = {
     margin: '1%'
   },
   filterInput: {
-    marginLeft: 10, 
+    marginLeft: 10,
     marginRight: 10
   }
 }
@@ -80,7 +80,7 @@ class Filter extends Component {
         }
       })
       this.props.updateFilteredData(filterData);
-    }else{
+    } else {
       this.props.updateFilteredData(this.props.data);
     }
   }
@@ -93,13 +93,13 @@ class Filter extends Component {
     const { name } = event.target;
     let { value } = event.target;
     let newState = {}
-    
+
     switch (name) {
       case 'propertyInput':
         const { propertyType, propertyId } = event.currentTarget.dataset;
         const distinctPropertyValues = this.getDistinctPropertyValues(this.props.data, propertyId);
         let { operatorInput } = this.state;
-        
+
         //check if new property datatype is valid with previous operator, if NOT reset operatorInput
         if (operatorInput.text && !operatorInput.type.includes(propertyType)) {
           operatorInput = initialState.operatorInput;
@@ -109,7 +109,7 @@ class Filter extends Component {
             id: propertyId,
             name: value,
             type: propertyType,
-          },  
+          },
           operatorInput: operatorInput,
           valueInput: {
             value: []
@@ -184,7 +184,7 @@ class Filter extends Component {
               <TextField
                 id="valueInput"
                 name="valueInput"
-                type={ this.state.propertyInput.type === "number" ? "number" : "text" }
+                type={this.state.propertyInput.type === "number" ? "number" : "text"}
                 value={this.state.valueInput.value}
                 onChange={this.handleChange}
                 style={formStyle.filterInput}

@@ -6,8 +6,8 @@ import {
 	none,
 	within,
 	contains
-  } from './operatorHelper';
-  
+} from './operatorHelper';
+
 const operatorMap = [
 	{
 		text: "Equals",

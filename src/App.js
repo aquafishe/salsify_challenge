@@ -11,7 +11,7 @@ class App extends Component {
       products: [],
       properties: [],
       data: [],
-      filteredData: [],   
+      filteredData: [],
       isDataLoaded: false
     }
   }
@@ -67,15 +67,15 @@ class App extends Component {
       <div className="App">
         <Container>
           <Box mt={2} borderTop={1} borderLeft={1} borderRight={1} overflow="hidden">
-          <Filter
-            properties={this.state.properties}
-            data={this.state.data}
-            updateFilteredData={this.updateFilteredData}
-          />
-        </Box>
-        { !this.state.isDataLoaded ? null : 
-          <ProductTable properties={this.state.properties} data={this.state.filteredData} />
-        }
+            <Filter
+              properties={this.state.properties}
+              data={this.state.data}
+              updateFilteredData={this.updateFilteredData}
+            />
+          </Box>
+          {!this.state.isDataLoaded ? null :
+            <ProductTable properties={this.state.properties} data={this.state.filteredData} />
+          }
         </Container>
       </div>
     )
